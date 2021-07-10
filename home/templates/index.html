@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+    <div class = "container-fluid" style = "background: #007bff;">
+        <div id = 'tabs' class = "container-fluid text-center" style = "max-width: 1280px;">
+          <ul class="nav nav-tabs">
+            <li class="nav-item" style = "width: 250px;">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item" style = "width: 250px;">
+              <a class="nav-link" href="{% url 'addpost' %}">Add a Post</a>
+            </li>
+
+            <li class="nav-item" style = "width: 250px;">
+                <a class="nav-link" href="{% url 'viewpost' %}">View Posts</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div class = " mt-5 container text-center">
+        <h1 class = "display-3"> Hello <strong>{{user}}</strong>!!... Welcome </h1>
+    </div>
+
+
+    {% else %}
+
+    <div class = "mt-5 container text-center">
+        <h1 class = "display-3"> Hello User!!!... <br> Authenticate yourself first </h1>
+    </div>
+    
+    {% endif %}
+
+
+{% endblock %}

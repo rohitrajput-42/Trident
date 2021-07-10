@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+    <div class = "container-fluid" style = "background: #007bff;">
+        <div id = 'tabs' class = "container-fluid text-center" style = "max-width: 1280px;">
+          <ul class="nav nav-tabs">
+            <li class="nav-item" style = "width: 250px;">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item" style = "width: 250px;">
+              <a class="nav-link active" aria-current="page" href="{% url 'addpost' %}">Add a Post</a>
+            </li>
+
+            <li class="nav-item" style = "width: 250px;">
+                <a class="nav-link" href="{% url 'viewpost' %}">View Posts</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div class = " mt-5 container text-center">
+        <h1 class = "display-3"> Hello <strong>{{user}}</strong>!!... Welcome </h1>
+    </div>
+
+    <div id = "task" class = "container shadow-lg p-3 mb-5 bg-white rounded border  mt-4 mb-5">
+      <form method = "POST">
+          {% csrf_token %}
+
+          <p class = "m-4" style = "font-size: 40px;"> Add a new post </p>
+
+          {{form|crispy}}
+
+          <input type = "submit" class = "btn btn-md btn-outline-primary m-4" value = "Add Task">
+      </form>
+    </div>
+
+
+    {% else %}
+
+    <div class = "mt-5 container text-center">
+        <h1 class = "display-3"> Hello User!!!... <br> Authenticate yourself first </h1>
+    </div>
+
+    {% endif %}
+
+
+{% endblock %}
