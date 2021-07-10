@@ -1,6 +1,6 @@
 # Trident (Introduction)
 
-It is a simple Blog application in which a user can add post, after succensfull authentication.
+It is a simple Blog application in which a user can add post, after successfull authentication.
 
 # Main Dependencies used
 
